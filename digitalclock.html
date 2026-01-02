@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Colorful Digital Clock</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      font-family: Arial, sans-serif;
+    }
+
+    .clock {
+      font-size: 70px;
+      font-weight: bold;
+      color: white;
+      padding: 30px 50px;
+      border-radius: 20px;
+      background: linear-gradient(90deg, #ff512f, #dd2476, #24c6dc, #514a9d);
+      background-size: 300% 300%;
+      animation: gradientMove 5s ease infinite;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+      letter-spacing: 4px;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="clock" id="clock">00:00:00</div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+
+      let h = now.getHours();
+      let m = now.getMinutes();
+      let s = now.getSeconds();
+
+      h = h < 10 ? "0" + h : h;
+      m = m < 10 ? "0" + m : m;
+      s = s < 10 ? "0" + s : s;
+
+      document.getElementById("clock").innerText =
+        h + ":" + m + ":" + s;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+
+</body>
+</html>
